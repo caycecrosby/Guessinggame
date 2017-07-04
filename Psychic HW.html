@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<center><h1> The Psychic Game </h1></center>
+<p> Guess what letter Im thinking! What score can you make it to before you guess incorrectly five times????<p>
+<p> Key word LETTER! Otherwise you'll just have a really bad score and be labeled as a noob! Good Luck!  <p>
+<br>
+
+<p id="wins">Wins: 0<p>
+<p id="losses">Losses: 0<p>
+<p id="guesses">Guesses Remaining: 10<p>>
+
+	<script type="text/javascript">
+
+
+
+	var userGuess;
+	var wins = 0;
+	var losses = 0; 
+	var compChoice;
+	var alphabetArray = [ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q","r", "s", "t", "u", "v", "w", "x", "y", "z"];
+	var guesses = 10;
+
+
+	//alphabetArray[2]
+	//0 1 2 3
+
+
+
+	compChoice = alphabetArray[Math.floor(Math.random() * alphabetArray.length)];
+
+
+	document.onkeyup = function (event) {
+
+		var userGuess = event.key;
+
+			alert(userGuess);
+			alert(compChoice);
+
+			if(guesses === 0){
+				alert("Game over")
+				alert("You won" + wins + " times and lost"+ losses + "times!")
+				guesses = 10
+				wins = 0
+				losses = 0 
+
+				document.getElementById("losses").innerHTML = "<p>Losses: 0</p>";
+				document.getElementById("guesses").innerHTML = "<p>Guesses Remaining: 10</p>";
+				document.getElementById("wins").innerHTML = "<p>Wins: 0</p>";
+
+			}else if(userGuess === compChoice){
+				alert("You're Right")
+				compChoice = alphabetArray[Math.floor(Math.random() * alphabetArray.length)];
+				wins++
+				
+		
+				document.getElementById("wins").innerHTML = "<p>Wins: " + wins + "</p>";
+				console.log(wins)
+				
+			}else {
+				alert("Try Again");
+				losses++
+				document.getElementById("losses").innerHTML = "<p>Losses: " + losses + "</p>";
+				console.log(losses)
+				guesses--
+				document.getElementById("guesses").innerHTML = "<p>Guesses Remaining: " + guesses + "</p>"
+				// losses + 1
+				//guess -1
+			}
+
+	}
+	</script>
+
+</body>
+</html>
